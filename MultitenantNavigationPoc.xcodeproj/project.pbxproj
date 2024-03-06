@@ -14,19 +14,10 @@
 		A3F30AA42B986E8300468E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3F30AA32B986E8300468E38 /* Assets.xcassets */; };
 		A3F30AA72B986E8300468E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3F30AA52B986E8300468E38 /* LaunchScreen.storyboard */; };
 		A3F30AB22B986E8300468E38 /* MultitenantNavigationPocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AB12B986E8300468E38 /* MultitenantNavigationPocTests.swift */; };
-		A3F30ABC2B986E8300468E38 /* MultitenantNavigationPocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ABB2B986E8300468E38 /* MultitenantNavigationPocUITests.swift */; };
-		A3F30ABE2B986E8300468E38 /* MultitenantNavigationPocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ABD2B986E8300468E38 /* MultitenantNavigationPocUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A3F30AAE2B986E8300468E38 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3F30A8F2B986E8100468E38 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A3F30A962B986E8100468E38;
-			remoteInfo = MultitenantNavigationPoc;
-		};
-		A3F30AB82B986E8300468E38 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3F30A8F2B986E8100468E38 /* Project object */;
 			proxyType = 1;
@@ -46,9 +37,6 @@
 		A3F30AA82B986E8300468E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3F30AAD2B986E8300468E38 /* MultitenantNavigationPocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultitenantNavigationPocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F30AB12B986E8300468E38 /* MultitenantNavigationPocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitenantNavigationPocTests.swift; sourceTree = "<group>"; };
-		A3F30AB72B986E8300468E38 /* MultitenantNavigationPocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultitenantNavigationPocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3F30ABB2B986E8300468E38 /* MultitenantNavigationPocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitenantNavigationPocUITests.swift; sourceTree = "<group>"; };
-		A3F30ABD2B986E8300468E38 /* MultitenantNavigationPocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitenantNavigationPocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +54,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3F30AB42B986E8300468E38 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +62,6 @@
 			children = (
 				A3F30A992B986E8100468E38 /* MultitenantNavigationPoc */,
 				A3F30AB02B986E8300468E38 /* MultitenantNavigationPocTests */,
-				A3F30ABA2B986E8300468E38 /* MultitenantNavigationPocUITests */,
 				A3F30A982B986E8100468E38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +71,6 @@
 			children = (
 				A3F30A972B986E8100468E38 /* MultitenantNavigationPoc.app */,
 				A3F30AAD2B986E8300468E38 /* MultitenantNavigationPocTests.xctest */,
-				A3F30AB72B986E8300468E38 /* MultitenantNavigationPocUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,15 +95,6 @@
 				A3F30AB12B986E8300468E38 /* MultitenantNavigationPocTests.swift */,
 			);
 			path = MultitenantNavigationPocTests;
-			sourceTree = "<group>";
-		};
-		A3F30ABA2B986E8300468E38 /* MultitenantNavigationPocUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A3F30ABB2B986E8300468E38 /* MultitenantNavigationPocUITests.swift */,
-				A3F30ABD2B986E8300468E38 /* MultitenantNavigationPocUITestsLaunchTests.swift */,
-			);
-			path = MultitenantNavigationPocUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,24 +135,6 @@
 			productReference = A3F30AAD2B986E8300468E38 /* MultitenantNavigationPocTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A3F30AB62B986E8300468E38 /* MultitenantNavigationPocUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A3F30AC72B986E8300468E38 /* Build configuration list for PBXNativeTarget "MultitenantNavigationPocUITests" */;
-			buildPhases = (
-				A3F30AB32B986E8300468E38 /* Sources */,
-				A3F30AB42B986E8300468E38 /* Frameworks */,
-				A3F30AB52B986E8300468E38 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A3F30AB92B986E8300468E38 /* PBXTargetDependency */,
-			);
-			name = MultitenantNavigationPocUITests;
-			productName = MultitenantNavigationPocUITests;
-			productReference = A3F30AB72B986E8300468E38 /* MultitenantNavigationPocUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +149,6 @@
 						CreatedOnToolsVersion = 15.0;
 					};
 					A3F30AAC2B986E8300468E38 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = A3F30A962B986E8100468E38;
-					};
-					A3F30AB62B986E8300468E38 = {
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = A3F30A962B986E8100468E38;
 					};
@@ -221,7 +169,6 @@
 			targets = (
 				A3F30A962B986E8100468E38 /* MultitenantNavigationPoc */,
 				A3F30AAC2B986E8300468E38 /* MultitenantNavigationPocTests */,
-				A3F30AB62B986E8300468E38 /* MultitenantNavigationPocUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +185,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A3F30AAB2B986E8300468E38 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A3F30AB52B986E8300468E38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,15 +212,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3F30AB32B986E8300468E38 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A3F30ABC2B986E8300468E38 /* MultitenantNavigationPocUITests.swift in Sources */,
-				A3F30ABE2B986E8300468E38 /* MultitenantNavigationPocUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -288,11 +219,6 @@
 			isa = PBXTargetDependency;
 			target = A3F30A962B986E8100468E38 /* MultitenantNavigationPoc */;
 			targetProxy = A3F30AAE2B986E8300468E38 /* PBXContainerItemProxy */;
-		};
-		A3F30AB92B986E8300468E38 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A3F30A962B986E8100468E38 /* MultitenantNavigationPoc */;
-			targetProxy = A3F30AB82B986E8300468E38 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -368,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -425,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -531,42 +457,6 @@
 			};
 			name = Release;
 		};
-		A3F30AC82B986E8300468E38 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8DURMPUBZ2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.MultitenantNavigationPocUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MultitenantNavigationPoc;
-			};
-			name = Debug;
-		};
-		A3F30AC92B986E8300468E38 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8DURMPUBZ2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alex.apostol.MultitenantNavigationPocUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MultitenantNavigationPoc;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -593,15 +483,6 @@
 			buildConfigurations = (
 				A3F30AC52B986E8300468E38 /* Debug */,
 				A3F30AC62B986E8300468E38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A3F30AC72B986E8300468E38 /* Build configuration list for PBXNativeTarget "MultitenantNavigationPocUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A3F30AC82B986E8300468E38 /* Debug */,
-				A3F30AC92B986E8300468E38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
