@@ -14,6 +14,9 @@
 		A3F30AA72B986E8300468E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3F30AA52B986E8300468E38 /* LaunchScreen.storyboard */; };
 		A3F30AB22B986E8300468E38 /* MultitenantNavigationPocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AB12B986E8300468E38 /* MultitenantNavigationPocTests.swift */; };
 		A3F30ACD2B986FB800468E38 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ACC2B986FB800468E38 /* MainViewController.swift */; };
+		A3F30AD02B98712D00468E38 /* MainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ACF2B98712D00468E38 /* MainModuleFactory.swift */; };
+		A3F30AD22B98714600468E38 /* MainModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AD12B98714600468E38 /* MainModuleViewModel.swift */; };
+		A3F30AD52B98718500468E38 /* MainModuleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AD42B98718500468E38 /* MainModuleViewOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 		A3F30AAD2B986E8300468E38 /* MultitenantNavigationPocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultitenantNavigationPocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F30AB12B986E8300468E38 /* MultitenantNavigationPocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitenantNavigationPocTests.swift; sourceTree = "<group>"; };
 		A3F30ACC2B986FB800468E38 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A3F30ACF2B98712D00468E38 /* MainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFactory.swift; sourceTree = "<group>"; };
+		A3F30AD12B98714600468E38 /* MainModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewModel.swift; sourceTree = "<group>"; };
+		A3F30AD42B98718500468E38 /* MainModuleViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +114,36 @@
 		A3F30ACB2B986FA000468E38 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				A3F30ACC2B986FB800468E38 /* MainViewController.swift */,
+				A3F30AD32B98717700468E38 /* View */,
+				A3F30ACE2B98711700468E38 /* Domain */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		A3F30ACE2B98711700468E38 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30AD62B9871D600468E38 /* Model */,
+				A3F30ACF2B98712D00468E38 /* MainModuleFactory.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A3F30AD32B98717700468E38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30ACC2B986FB800468E38 /* MainViewController.swift */,
+				A3F30AD42B98718500468E38 /* MainModuleViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A3F30AD62B9871D600468E38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30AD12B98714600468E38 /* MainModuleViewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,9 +247,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3F30A9F2B986E8100468E38 /* ViewController.swift in Sources */,
+				A3F30AD22B98714600468E38 /* MainModuleViewModel.swift in Sources */,
 				A3F30A9B2B986E8100468E38 /* AppDelegate.swift in Sources */,
 				A3F30A9D2B986E8100468E38 /* SceneDelegate.swift in Sources */,
 				A3F30ACD2B986FB800468E38 /* MainViewController.swift in Sources */,
+				A3F30AD52B98718500468E38 /* MainModuleViewOutput.swift in Sources */,
+				A3F30AD02B98712D00468E38 /* MainModuleFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
