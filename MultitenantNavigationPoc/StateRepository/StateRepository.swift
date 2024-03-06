@@ -13,19 +13,19 @@ public enum UserIdentity {
 }
 
 public protocol StateRepositoryProtocol {
-    func updateUserState(to state: UserIdentity)
-    func getUserState() -> UserIdentity
+    static func updateUserState(to state: UserIdentity)
+    static func getUserState() -> UserIdentity
 }
 
 
 public final class StateRepository: StateRepositoryProtocol {
-    private var userState: UserIdentity = .guest
+    private static var userState: UserIdentity = .guest
 
-    public func updateUserState(to state: UserIdentity) {
+    public static func updateUserState(to state: UserIdentity) {
         userState = state
     }
 
-    public func getUserState() -> UserIdentity {
+    public static func getUserState() -> UserIdentity {
         userState
     }
 }

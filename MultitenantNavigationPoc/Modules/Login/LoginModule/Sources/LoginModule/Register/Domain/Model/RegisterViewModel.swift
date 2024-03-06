@@ -8,10 +8,26 @@
 import Foundation
 
 protocol RegisterViewModelProtocol {
-
+    func registerUser()
+    func unregisterUser()
 }
 
 
-public final class RegisterViewModel {
+final class RegisterViewModel {
+    private let coordinatorOutput: (RegisterViewOutput) -> Void
+
+    init(coordinatorOutput: @escaping (RegisterViewOutput) -> Void) {
+        self.coordinatorOutput = coordinatorOutput
+    }
+}
+
+
+extension RegisterViewModel: RegisterViewModelProtocol {
+    func registerUser() {
+        coordinatorOutput(.didRegister(result: true))
+    }
     
+    func unregisterUser() {
+        coordinatorOutput(.didRegister(result: false))
+    }
 }

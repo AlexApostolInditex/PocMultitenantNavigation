@@ -36,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		A346E01A2B98BB8500C9D3F0 /* StateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRepository.swift; sourceTree = "<group>"; };
+		A346E01D2B98C3DA00C9D3F0 /* CheckoutModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CheckoutModule; sourceTree = "<group>"; };
 		A3F30A972B986E8100468E38 /* MultitenantNavigationPoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultitenantNavigationPoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F30A9A2B986E8100468E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F30A9C2B986E8100468E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +82,14 @@
 				A346E01A2B98BB8500C9D3F0 /* StateRepository.swift */,
 			);
 			path = StateRepository;
+			sourceTree = "<group>";
+		};
+		A346E01C2B98C3AD00C9D3F0 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				A346E01D2B98C3DA00C9D3F0 /* CheckoutModule */,
+			);
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 		A3F30A8E2B986E8100468E38 = {
@@ -130,6 +139,7 @@
 		A3F30ACA2B986F9700468E38 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A346E01C2B98C3AD00C9D3F0 /* Checkout */,
 				A3F30AE22B98AA5D00468E38 /* Login */,
 				A3F30ACB2B986FA000468E38 /* Main */,
 			);

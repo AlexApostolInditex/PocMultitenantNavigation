@@ -11,7 +11,9 @@ import UIKit
 public final class RegisterFactory {
     private init () {}
 
-    public static func makeRegisterModule() -> UIViewController {
-        RegisterViewController()
+    public static func makeRegisterModule(coordinatorOutput: @escaping (RegisterViewOutput) -> Void) -> UIViewController {
+        let viewModel = RegisterViewModel(coordinatorOutput: coordinatorOutput)
+        let viewController = RegisterViewController(viewModel: viewModel)
+        return viewController
     }
 }

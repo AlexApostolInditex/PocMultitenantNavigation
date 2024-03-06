@@ -74,7 +74,13 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 
     private func showRegisterFlow() {
-        let viewController = RegisterFactory.makeRegisterModule()
+        let viewController = RegisterFactory.makeRegisterModule { output in
+            switch output {
+            case .didRegister(result: let result):
+                StateRepository.updateUserState(to: result ? .user : .guest)
+            }
+        }
+
         navigationController.pushViewController(viewController, animated: true)
     }
 

@@ -7,12 +7,12 @@
 
 import Foundation
 
-public protocol LoginViewModelProtocol {
+protocol LoginViewModelProtocol {
     func didPressGoToRegister()
 }
 
 
-public final class LoginViewModel {
+final class LoginViewModel {
 
     private let coordinatorOutput: (LoginViewOutput) -> Void
 
