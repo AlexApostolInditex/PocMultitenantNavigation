@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 public final class MainModuleCoordinator: Coordinator {
+    public var parentCoordinator: Coordinator?
 
-    private enum State {
+    public var children: [Coordinator] = []
+
+     public enum State: Equatable {
         case initial
         case willShowMainModule
         case willShowCheckout
@@ -19,9 +22,15 @@ public final class MainModuleCoordinator: Coordinator {
     }
 
     private let navigator: UINavigationController
-    private var currentState: State = .initial
+    private (set) var currentState: State = .initial
 
     public func start() {
+        loop()
+    }
+
+    public func start(with state: State) {
+        currentState = state
+        loop()
     }
 
     init(navigator: UINavigationController) {
@@ -60,7 +69,16 @@ public final class MainModuleCoordinator: Coordinator {
     }
 
     private func showMainModule() {
+        let viewController = MainModuleFactory.makeMainModule { [weak self] output in
+            switch output {
+            case .goToLogin:
+                self?.currentState = .didShowMainModule(output: .goToLogin)
+            case .goToCheckout:
+                self?.currentState = .didShowMainModule(output: .goToCheckout)
+            }
+        }
 
+        navigator.setViewControllers([viewController], animated: true)
     }
 
     private func showLoginModule() {
