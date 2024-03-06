@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A346E01B2B98BB8500C9D3F0 /* StateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A346E01A2B98BB8500C9D3F0 /* StateRepository.swift */; };
 		A3F30A9B2B986E8100468E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30A9A2B986E8100468E38 /* AppDelegate.swift */; };
 		A3F30A9D2B986E8100468E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30A9C2B986E8100468E38 /* SceneDelegate.swift */; };
 		A3F30A9F2B986E8100468E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30A9E2B986E8100468E38 /* ViewController.swift */; };
@@ -19,6 +20,8 @@
 		A3F30ADA2B98764200468E38 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AD92B98764200468E38 /* Coordinator.swift */; };
 		A3F30ADD2B98767600468E38 /* MainModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ADC2B98767600468E38 /* MainModuleCoordinator.swift */; };
 		A3F30AE02B987BAD00468E38 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ADF2B987BAD00468E38 /* MainCoordinatorTests.swift */; };
+		A3F30AE52B98AA8300468E38 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AE42B98AA8300468E38 /* LoginCoordinator.swift */; };
+		A3F30AE82B98AB1100468E38 /* LoginModule in Frameworks */ = {isa = PBXBuildFile; productRef = A3F30AE72B98AB1100468E38 /* LoginModule */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A346E01A2B98BB8500C9D3F0 /* StateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRepository.swift; sourceTree = "<group>"; };
 		A3F30A972B986E8100468E38 /* MultitenantNavigationPoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultitenantNavigationPoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F30A9A2B986E8100468E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F30A9C2B986E8100468E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 		A3F30ADE2B987BAC00468E38 /* MultitenantNavigationPocTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultitenantNavigationPocTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A3F30ADF2B987BAD00468E38 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		A3F30AE12B988B5800468E38 /* LoginModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LoginModule; sourceTree = "<group>"; };
+		A3F30AE42B98AA8300468E38 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F30AE82B98AB1100468E38 /* LoginModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +75,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A346E0192B98BB7A00C9D3F0 /* StateRepository */ = {
+			isa = PBXGroup;
+			children = (
+				A346E01A2B98BB8500C9D3F0 /* StateRepository.swift */,
+			);
+			path = StateRepository;
+			sourceTree = "<group>";
+		};
 		A3F30A8E2B986E8100468E38 = {
 			isa = PBXGroup;
 			children = (
 				A3F30A992B986E8100468E38 /* MultitenantNavigationPoc */,
 				A3F30AB02B986E8300468E38 /* MultitenantNavigationPocTests */,
 				A3F30A982B986E8100468E38 /* Products */,
+				A3F30AE62B98AB1100468E38 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +105,7 @@
 		A3F30A992B986E8100468E38 /* MultitenantNavigationPoc */ = {
 			isa = PBXGroup;
 			children = (
+				A346E0192B98BB7A00C9D3F0 /* StateRepository */,
 				A3F30AD82B98763700468E38 /* Coordinator */,
 				A3F30ACA2B986F9700468E38 /* Modules */,
 				A3F30A9A2B986E8100468E38 /* AppDelegate.swift */,
@@ -114,7 +130,7 @@
 		A3F30ACA2B986F9700468E38 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A3F30AE12B988B5800468E38 /* LoginModule */,
+				A3F30AE22B98AA5D00468E38 /* Login */,
 				A3F30ACB2B986FA000468E38 /* Main */,
 			);
 			path = Modules;
@@ -172,6 +188,30 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		A3F30AE22B98AA5D00468E38 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30AE32B98AA7800468E38 /* Coordinator */,
+				A3F30AE12B988B5800468E38 /* LoginModule */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A3F30AE32B98AA7800468E38 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30AE42B98AA8300468E38 /* LoginCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A3F30AE62B98AB1100468E38 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,6 +228,9 @@
 			dependencies = (
 			);
 			name = MultitenantNavigationPoc;
+			packageProductDependencies = (
+				A3F30AE72B98AB1100468E38 /* LoginModule */,
+			);
 			productName = MultitenantNavigationPoc;
 			productReference = A3F30A972B986E8100468E38 /* MultitenantNavigationPoc.app */;
 			productType = "com.apple.product-type.application";
@@ -273,8 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A346E01B2B98BB8500C9D3F0 /* StateRepository.swift in Sources */,
 				A3F30ADA2B98764200468E38 /* Coordinator.swift in Sources */,
 				A3F30A9F2B986E8100468E38 /* ViewController.swift in Sources */,
+				A3F30AE52B98AA8300468E38 /* LoginCoordinator.swift in Sources */,
 				A3F30AD22B98714600468E38 /* MainModuleViewModel.swift in Sources */,
 				A3F30A9B2B986E8100468E38 /* AppDelegate.swift in Sources */,
 				A3F30A9D2B986E8100468E38 /* SceneDelegate.swift in Sources */,
@@ -566,6 +611,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A3F30AE72B98AB1100468E38 /* LoginModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LoginModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A3F30A8F2B986E8100468E38 /* Project object */;
 }

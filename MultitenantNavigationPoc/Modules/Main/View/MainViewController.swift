@@ -16,6 +16,7 @@ public class MainViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Go To Checkout", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(didPressCheckoutButton), for: .touchUpInside)
         return button
     }()
 
@@ -24,6 +25,7 @@ public class MainViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Go To Login", for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(didPressLoginButton), for: .touchUpInside)
         return button
     }()
 
@@ -51,11 +53,22 @@ public class MainViewController: UIViewController {
         super.viewDidLoad()
         setUpMainStackViewLayout()
         view.backgroundColor = .white
+        title = "Main"
     }
 
     private func setUpMainStackViewLayout() {
         view.addSubview(mainStackView)
         mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+
+    @objc
+    private func didPressLoginButton() {
+        viewModel.didPressLoginButton()
+    }
+
+    @objc
+    private func didPressCheckoutButton() {
+        viewModel.didPressCheckoutButton()
     }
 }

@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 public final class MainModuleFactory {
     private init() {}
 
-    public static func makeMainModule(coordinatorOutput: @escaping (MainModuleViewOutput) -> Void) -> MainViewController {
+    public static func makeMainModule(coordinatorOutput: @escaping (MainModuleViewOutput) -> Void) -> UIViewController {
         let model = MainModuleViewModel(coordinatorOutput: coordinatorOutput)
         let viewController = MainViewController(viewModel: model)
         return viewController

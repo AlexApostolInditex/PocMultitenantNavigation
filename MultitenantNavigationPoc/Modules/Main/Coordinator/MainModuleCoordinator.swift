@@ -21,7 +21,7 @@ public final class MainModuleCoordinator: Coordinator {
         case didShowMainModule(output: MainModuleViewOutput)
     }
 
-    private let navigator: UINavigationController
+    public var navigationController: UINavigationController
     private (set) var currentState: State = .initial
 
     public func start() {
@@ -34,7 +34,7 @@ public final class MainModuleCoordinator: Coordinator {
     }
 
     init(navigator: UINavigationController) {
-        self.navigator = navigator
+        self.navigationController = navigator
     }
 
     private func loop() {
@@ -43,10 +43,13 @@ public final class MainModuleCoordinator: Coordinator {
         switch currentState {
         case .willShowMainModule:
             showMainModule()
+
         case .willShowCheckout:
             showCheckoutModule()
+
         case .willShowLogin:
              showLoginModule()
+
         case .didShowMainModule, .initial:
             assertionFailure("Unexpected looping case")
         }
@@ -56,6 +59,7 @@ public final class MainModuleCoordinator: Coordinator {
         switch nextState {
         case .initial:
             return .willShowMainModule
+
         case .didShowMainModule(let output):
             switch output {
             case .goToLogin:
@@ -63,6 +67,7 @@ public final class MainModuleCoordinator: Coordinator {
             case .goToCheckout:
                 return .willShowCheckout
             }
+
         case .willShowMainModule, .willShowLogin, .willShowCheckout:
             return nextState
         }
@@ -73,20 +78,24 @@ public final class MainModuleCoordinator: Coordinator {
             switch output {
             case .goToLogin:
                 self?.currentState = .didShowMainModule(output: .goToLogin)
+                self?.loop()
+
             case .goToCheckout:
                 self?.currentState = .didShowMainModule(output: .goToCheckout)
+                self?.loop()
             }
         }
 
-        navigator.setViewControllers([viewController], animated: true)
+        navigationController.setViewControllers([viewController], animated: true)
     }
 
     private func showLoginModule() {
-
+        let loginCoordinator = LoginCoordinator(parentCoordinator: self, navigationController: navigationController)
+        children.append(loginCoordinator)
+        loginCoordinator.start()
     }
 
     private func showCheckoutModule() {
 
     }
-
 }
