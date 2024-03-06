@@ -17,6 +17,8 @@
 		A3F30AD02B98712D00468E38 /* MainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ACF2B98712D00468E38 /* MainModuleFactory.swift */; };
 		A3F30AD22B98714600468E38 /* MainModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AD12B98714600468E38 /* MainModuleViewModel.swift */; };
 		A3F30AD52B98718500468E38 /* MainModuleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AD42B98718500468E38 /* MainModuleViewOutput.swift */; };
+		A3F30ADA2B98764200468E38 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30AD92B98764200468E38 /* Coordinator.swift */; };
+		A3F30ADD2B98767600468E38 /* MainModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30ADC2B98767600468E38 /* MainModuleCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		A3F30ACF2B98712D00468E38 /* MainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFactory.swift; sourceTree = "<group>"; };
 		A3F30AD12B98714600468E38 /* MainModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewModel.swift; sourceTree = "<group>"; };
 		A3F30AD42B98718500468E38 /* MainModuleViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewOutput.swift; sourceTree = "<group>"; };
+		A3F30AD92B98764200468E38 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A3F30ADC2B98767600468E38 /* MainModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +88,8 @@
 		A3F30A992B986E8100468E38 /* MultitenantNavigationPoc */ = {
 			isa = PBXGroup;
 			children = (
-				A3F30ACA2B986F9700468E38 /* Controllers */,
+				A3F30AD82B98763700468E38 /* Coordinator */,
+				A3F30ACA2B986F9700468E38 /* Modules */,
 				A3F30A9A2B986E8100468E38 /* AppDelegate.swift */,
 				A3F30A9C2B986E8100468E38 /* SceneDelegate.swift */,
 				A3F30A9E2B986E8100468E38 /* ViewController.swift */,
@@ -103,17 +108,18 @@
 			path = MultitenantNavigationPocTests;
 			sourceTree = "<group>";
 		};
-		A3F30ACA2B986F9700468E38 /* Controllers */ = {
+		A3F30ACA2B986F9700468E38 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				A3F30ACB2B986FA000468E38 /* Main */,
 			);
-			path = Controllers;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		A3F30ACB2B986FA000468E38 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A3F30ADB2B98766900468E38 /* Coordinator */,
 				A3F30AD32B98717700468E38 /* View */,
 				A3F30ACE2B98711700468E38 /* Domain */,
 			);
@@ -144,6 +150,22 @@
 				A3F30AD12B98714600468E38 /* MainModuleViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A3F30AD82B98763700468E38 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30AD92B98764200468E38 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A3F30ADB2B98766900468E38 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A3F30ADC2B98767600468E38 /* MainModuleCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,12 +268,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F30ADA2B98764200468E38 /* Coordinator.swift in Sources */,
 				A3F30A9F2B986E8100468E38 /* ViewController.swift in Sources */,
 				A3F30AD22B98714600468E38 /* MainModuleViewModel.swift in Sources */,
 				A3F30A9B2B986E8100468E38 /* AppDelegate.swift in Sources */,
 				A3F30A9D2B986E8100468E38 /* SceneDelegate.swift in Sources */,
 				A3F30ACD2B986FB800468E38 /* MainViewController.swift in Sources */,
 				A3F30AD52B98718500468E38 /* MainModuleViewOutput.swift in Sources */,
+				A3F30ADD2B98767600468E38 /* MainModuleCoordinator.swift in Sources */,
 				A3F30AD02B98712D00468E38 /* MainModuleFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
