@@ -48,6 +48,7 @@
 		A3F30ADC2B98767600468E38 /* MainModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleCoordinator.swift; sourceTree = "<group>"; };
 		A3F30ADE2B987BAC00468E38 /* MultitenantNavigationPocTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultitenantNavigationPocTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A3F30ADF2B987BAD00468E38 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
+		A3F30AE12B988B5800468E38 /* LoginModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LoginModule; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 		A3F30ACA2B986F9700468E38 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A3F30AE12B988B5800468E38 /* LoginModule */,
 				A3F30ACB2B986FA000468E38 /* Main */,
 			);
 			path = Modules;
