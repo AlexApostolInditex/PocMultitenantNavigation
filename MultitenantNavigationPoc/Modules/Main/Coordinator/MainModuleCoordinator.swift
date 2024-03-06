@@ -96,6 +96,8 @@ public final class MainModuleCoordinator: Coordinator {
     }
 
     private func showCheckoutModule() {
-
+        let checkoutCoordinator = CheckoutCoordinator(parentCoordinator: self, navigationController: navigationController)
+        children.append(checkoutCoordinator)
+        checkoutCoordinator.start()
     }
 }

@@ -28,5 +28,9 @@ extension CheckoutViewModel: CheckoutViewModelProtocol {
 }
 
 public struct CheckoutParams {
-    var isUserLogin: Bool
+    let isUserLogin: Bool
+
+    public init(isUserLogin: Bool) {
+        self.isUserLogin = isUserLogin
+    }
 }

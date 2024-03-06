@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckoutViewController: UIViewController {
+public final class CheckoutViewController: UIViewController {
 
     private let viewModel: CheckoutViewModelProtocol
 
@@ -29,7 +29,7 @@ class CheckoutViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .cyan
