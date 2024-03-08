@@ -41,6 +41,11 @@ public final class LoginCoordinator: NSObject, Coordinator {
         loop()
     }
 
+    public func start(with state: State) {
+        currentState = state
+        loop()
+    }
+
     public func start(navigationStateWatcher: @escaping (State) -> Void) {
         self.navigationStateWatcher = navigationStateWatcher
         currentState = .initial
