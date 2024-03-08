@@ -109,23 +109,20 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
         children.append(loginCoordinator)
         loginCoordinator.start { [weak self] state in
             switch state {
-            case .didShowLogin(output: let output):
-                switch output {
-                case .didLogin:
+            case .willShowProfile:
                     self?.navigationController.popViewController(animated: true)
                     self?.currentState = .willShowShippingMethods
                     self?.loop()
-
-                case .goToRegister:
-                    break
-                }
+                return true
             case .didShowRegister:
                 self?.navigationController.popUntil(CheckoutViewController.self)
                 self?.currentState = .willShowShippingMethods
                 self?.loop()
+                return true
             default: break
 
             }
+            return false
         }
     }
 }

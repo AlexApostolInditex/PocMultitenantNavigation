@@ -25,8 +25,9 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 
     private (set) var currentState: State = .initial
+    
     public var navigationController: UINavigationController
-    private var navigationStateWatcher: ((State) -> Void)? = nil
+    private var navigationStateWatcher: ((State) -> Bool)? = nil
 
     init(parentCoordinator: Coordinator? = nil, navigationController: UINavigationController) {
         self.parentCoordinator = parentCoordinator
@@ -46,7 +47,7 @@ public final class LoginCoordinator: NSObject, Coordinator {
         loop()
     }
 
-    public func start(navigationStateWatcher: @escaping (State) -> Void) {
+    public func start(navigationStateWatcher: @escaping (State) -> Bool) {
         self.navigationStateWatcher = navigationStateWatcher
         currentState = .initial
         loop()
@@ -57,6 +58,8 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 
     private func loop() {
+        if let navigationStateWatcher = navigationStateWatcher, navigationStateWatcher(currentState) {return}
+
         self.currentState = next(currentState)
 
         switch currentState {
@@ -117,12 +120,8 @@ public final class LoginCoordinator: NSObject, Coordinator {
             case .didLogin(let result):
                 if result {
                     StateRepository.updateUserState(to: .user)
-                    if self?.navigationStateWatcher == nil {
                         self?.currentState = .willShowProfile
                         self?.loop()
-                    } else {
-                        self?.navigationStateWatcher?(.didShowLogin(output: output))
-                    }
                 } else {
                     // Show Error View
                 }

@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 public protocol Coordinator: AnyObject {
-    func start()
     var parentCoordinator: Coordinator? { get }
     var children: [Coordinator] { get set }
     var navigationController : UINavigationController { get }
+    func start()
 }
 
 public extension Coordinator {
@@ -34,3 +34,4 @@ public extension Coordinator {
         }
     }
 }
+

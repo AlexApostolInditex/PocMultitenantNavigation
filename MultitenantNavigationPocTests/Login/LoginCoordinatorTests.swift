@@ -26,16 +26,27 @@ final class LoginCoordinatorTests: XCTestCase {
 
     func test_loginCoordinator_givenInitialState_willShowLoginView() {
         sut.start()
-        XCTAssertEqual(sut.currentState, LoginCoordinator.State.willShowLogin)
+        XCTAssertEqual(sut.currentState, .willShowLogin)
     }
 
     func test_loginCoordinator_given_loginFlowFinishedWithRegisterOutput_willShowRegisterFlow() {
         sut.start(with: .didShowLogin(output: .goToRegister))
-        XCTAssertEqual(sut.currentState, LoginCoordinator.State.willShowRegister)
+        XCTAssertEqual(sut.currentState, .willShowRegister)
     }
 
     func test_loginCoordinator_given_loginFlowFinishedWithLogingOutput_willProfile() {
         sut.start(with: .didShowLogin(output: .didLogin(result: true)))
-        XCTAssertEqual(sut.currentState, LoginCoordinator.State.willShowProfile)
+        XCTAssertEqual(sut.currentState, .willShowProfile)
+    }
+
+    func test_loginCoordinator_given_watcher_informsWatcher() {
+        var capturedState: [LoginCoordinator.State] = []
+        let navigationStateWatcher: (LoginCoordinator.State) -> Bool = { state in
+            capturedState.append(state)
+            return true
+        }
+
+        sut.start(navigationStateWatcher: navigationStateWatcher)
+        XCTAssertEqual(capturedState, [.initial])
     }
 }
