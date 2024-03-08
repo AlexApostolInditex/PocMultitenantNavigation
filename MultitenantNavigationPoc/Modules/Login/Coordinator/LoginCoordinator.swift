@@ -15,15 +15,18 @@ public final class LoginCoordinator: NSObject, Coordinator {
     
     public var children: [Coordinator] = []
 
-    public enum State {
+    public enum State: Equatable {
         case initial
         case didShowLogin(output: LoginViewOutput)
         case willShowRegister
         case willShowLogin
+        case didShowRegister
+        case willShowProfile
     }
 
     private (set) var currentState: State = .initial
     public var navigationController: UINavigationController
+    private var navigationStateWatcher: ((State) -> Void)? = nil
 
     init(parentCoordinator: Coordinator? = nil, navigationController: UINavigationController) {
         self.parentCoordinator = parentCoordinator
@@ -33,6 +36,12 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 
     public func start() {
+        currentState = .initial
+        loop()
+    }
+
+    public func start(navigationStateWatcher: @escaping (State) -> Void) {
+        self.navigationStateWatcher = navigationStateWatcher
         currentState = .initial
         loop()
     }
@@ -52,7 +61,10 @@ public final class LoginCoordinator: NSObject, Coordinator {
         case .willShowLogin:
             showLoginFlow()
 
-        case .initial, .didShowLogin:
+        case .willShowProfile:
+            willShowProfile()
+            
+        case .initial, .didShowLogin, .didShowRegister:
             assertionFailure("Unexpected looping case")
         }
     }
@@ -66,18 +78,23 @@ public final class LoginCoordinator: NSObject, Coordinator {
             switch output {
             case .goToRegister:
                 return .willShowRegister
+
+            case .didLogin:
+                return .willShowProfile
             }
             
-        case .willShowRegister, .willShowLogin:
+        case .willShowRegister, .willShowLogin, .didShowRegister, .willShowProfile:
             return nextState
         }
     }
 
     private func showRegisterFlow() {
-        let viewController = RegisterFactory.makeRegisterModule { output in
+        let viewController = RegisterFactory.makeRegisterModule { [weak self] output in
             switch output {
-            case .didRegister(result: let result):
-                StateRepository.updateUserState(to: result ? .user : .guest)
+            case .didRegister(result: let didRegister):
+                StateRepository.updateUserState(to: didRegister ? .user : .guest)
+                print("UserIdentity: \(StateRepository.getUserState())")
+                self?.navigationStateWatcher?(.didShowRegister)
             }
         }
 
@@ -90,9 +107,30 @@ public final class LoginCoordinator: NSObject, Coordinator {
             case .goToRegister:
                 self?.currentState = .willShowRegister
                 self?.loop()
+
+            case .didLogin(let result):
+                if result {
+                    StateRepository.updateUserState(to: .user)
+                    if self?.navigationStateWatcher == nil {
+                        self?.currentState = .willShowProfile
+                        self?.loop()
+                    } else {
+                        self?.navigationStateWatcher?(.didShowLogin(output: output))
+                    }
+                } else {
+                    // Show Error View
+                }
             }
         }
 
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    private func willShowProfile() {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .green
+        viewController.title = "Profile"
+        navigationController.popViewController(animated: true)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

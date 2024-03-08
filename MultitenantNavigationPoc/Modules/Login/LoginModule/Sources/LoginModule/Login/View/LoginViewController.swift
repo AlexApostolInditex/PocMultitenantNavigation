@@ -20,6 +20,25 @@ public final class LoginViewController: UIViewController {
         return button
     }()
 
+    private lazy var loginButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(didPressLogin), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var mainStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [loginButton, registerButton])
+        view.distribution = .fill
+        view.alignment = .fill
+        view.axis = .horizontal
+        view.spacing = 20
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -32,19 +51,24 @@ public final class LoginViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        setUpRegisterButtonLayout()
+        setUpMainStackViewLayout()
         title = "Login"
     }
 
-    private func setUpRegisterButtonLayout() {
-        view.addSubview(registerButton)
-        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    private func setUpMainStackViewLayout() {
+        view.addSubview(mainStackView)
+        mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
     @objc
     private func didPressRegisterButton() {
         viewModel.didPressGoToRegister()
+    }
+
+    @objc
+    private func didPressLogin() {
+        viewModel.didPressLoginButton()
     }
 
 }

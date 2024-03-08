@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol CheckoutViewModelProtocol {
     func didPressContinue()
@@ -13,11 +14,25 @@ protocol CheckoutViewModelProtocol {
 
 final class CheckoutViewModel {
     private let coordinatorOutput: (CheckoutViewOutput) -> Void
-    private let params: CheckoutParams
+    private var params: CheckoutParams
+    private let userIdentitySignal: AnyPublisher<CheckoutParams, Never>
+    private var cancellable: AnyCancellable? = nil
 
-    init(params: CheckoutParams, coordinatorOutput: @escaping (CheckoutViewOutput) -> Void) {
+    init(userIdentitySignal: AnyPublisher<CheckoutParams, Never>, params: CheckoutParams, coordinatorOutput: @escaping (CheckoutViewOutput) -> Void) {
         self.coordinatorOutput = coordinatorOutput
         self.params = params
+        self.userIdentitySignal = userIdentitySignal
+        listenIdentityChanges()
+    }
+
+    deinit {
+        cancellable = nil
+    }
+
+    private func listenIdentityChanges() {
+       cancellable =  userIdentitySignal.sink { [weak self] params in
+           self?.params = params
+        }
     }
 }
 

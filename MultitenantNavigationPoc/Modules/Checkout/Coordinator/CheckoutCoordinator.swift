@@ -77,7 +77,12 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
 
     private func showCheckout() {
         let checkoutParams = CheckoutParams(isUserLogin: StateRepository.getUserState() == .user)
-        let viewController = CheckoutFactory.makeCheckoutModule(params: checkoutParams) { [weak self] output in
+        let viewController = CheckoutFactory.makeCheckoutModule(
+            userIdentitySignal: StateRepository.userStateSignal.map({ identity in
+                CheckoutParams(isUserLogin: identity == .user)
+            }).eraseToAnyPublisher(),
+            params: checkoutParams
+        ) { [weak self] output in
             switch output {
 
             case .goToShippingMethods:
@@ -102,11 +107,30 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
     private func showLogin() {
         let loginCoordinator = LoginCoordinator(parentCoordinator: self, navigationController: navigationController)
         children.append(loginCoordinator)
-        loginCoordinator.start()
+        loginCoordinator.start { [weak self] state in
+            switch state {
+            case .didShowLogin(output: let output):
+                switch output {
+                case .didLogin:
+                    self?.navigationController.popViewController(animated: true)
+                    self?.currentState = .willShowShippingMethods
+                    self?.loop()
+
+                case .goToRegister:
+                    break
+                }
+            case .didShowRegister:
+                self?.navigationController.popUntil(CheckoutViewController.self)
+                self?.currentState = .willShowShippingMethods
+                self?.loop()
+            default: break
+
+            }
+        }
     }
 }
 
-extension CheckoutCoordinator: UINavigationControllerDelegate {
+extension CheckoutCoordinator: UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard
             let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
@@ -116,6 +140,22 @@ extension CheckoutCoordinator: UINavigationControllerDelegate {
 
         if (fromViewController is CheckoutViewController) {
             parentCoordinator?.childDidFinish(self)
+        }
+    }
+
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
+    }
+}
+
+extension UINavigationController {
+    func popUntil(_ vc: UIViewController.Type) {
+        viewControllers.forEach { controller in
+            if !(controller === vc) {
+                self.popViewController(animated: true)
+            } else {
+               return
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol LoginViewModelProtocol {
     func didPressGoToRegister()
+    func didPressLoginButton()
 }
 
 
@@ -25,5 +26,9 @@ final class LoginViewModel {
 extension LoginViewModel: LoginViewModelProtocol {
     public func didPressGoToRegister() {
         coordinatorOutput(.goToRegister)
+    }
+
+    public func didPressLoginButton() {
+        coordinatorOutput(.didLogin(result: true))
     }
 }

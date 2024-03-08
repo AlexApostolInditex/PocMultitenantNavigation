@@ -7,6 +7,7 @@
 
 import Foundation
 
-public enum LoginViewOutput {
+public enum LoginViewOutput: Equatable {
     case goToRegister
+    case didLogin(result: Bool)
 }
