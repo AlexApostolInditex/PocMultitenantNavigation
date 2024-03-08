@@ -33,6 +33,7 @@ public final class LoginCoordinator: NSObject, Coordinator {
         self.navigationController = navigationController
         super.init()
         navigationController.delegate = self
+        navigationController.interactivePopGestureRecognizer?.delegate = self
     }
 
     public func start() {
@@ -122,7 +123,9 @@ public final class LoginCoordinator: NSObject, Coordinator {
                 }
             }
         }
-
+        // MARK: Sheet presentation example
+       // viewController.presentationController?.delegate = self
+       // navigationController.present(viewController, animated: true)
         navigationController.pushViewController(viewController, animated: true)
     }
 
@@ -135,7 +138,7 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 }
 
-extension LoginCoordinator: UINavigationControllerDelegate {
+extension LoginCoordinator: UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate {
     public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard
             let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from),
@@ -144,6 +147,16 @@ extension LoginCoordinator: UINavigationControllerDelegate {
         }
 
         if (fromViewController is LoginViewController) {
+            parentCoordinator?.childDidFinish(self)
+        }
+    }
+
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
+    }
+
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        if presentationController.presentedViewController is LoginViewController {
             parentCoordinator?.childDidFinish(self)
         }
     }
