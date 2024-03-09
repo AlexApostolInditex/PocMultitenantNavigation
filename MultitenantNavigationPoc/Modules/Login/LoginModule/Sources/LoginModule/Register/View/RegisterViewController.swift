@@ -20,17 +20,8 @@ class RegisterViewController: UIViewController {
         return button
     }()
 
-    private lazy var unregisterButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Unregister User", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(didPressUnregisterButton), for: .touchUpInside)
-        return button
-    }()
-
     private lazy var mainStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [registerButton, unregisterButton])
+        let view = UIStackView(arrangedSubviews: [registerButton])
         view.distribution = .fill
         view.alignment = .fill
         view.axis = .horizontal
@@ -65,10 +56,5 @@ class RegisterViewController: UIViewController {
     @objc
     private func didPressRegisterButton() {
         viewModel.registerUser()
-    }
-
-    @objc
-    private func didPressUnregisterButton() {
-        viewModel.unregisterUser()
     }
 }

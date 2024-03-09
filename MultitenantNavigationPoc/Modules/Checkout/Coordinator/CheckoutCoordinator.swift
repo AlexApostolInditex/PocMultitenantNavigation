@@ -10,15 +10,13 @@ import CheckoutModule
 import UIKit
 
 public final class CheckoutCoordinator: NSObject, Coordinator {
-    public var watcher: ((State) -> Bool)?
-    
     public var parentCoordinator: (any Coordinator)?
     
     public var children: [any Coordinator] = []
 
     public var navigationController: UINavigationController
     
-    public enum State {
+    public enum State: Equatable {
         case initial
         case willShowCheckout
         case didShowCheckout(CheckoutViewOutput)
@@ -29,6 +27,11 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
     private (set) var currentState: State = .initial
 
     public func start() {
+        loop()
+    }
+
+    public func start(state: State) {
+        currentState = state
         loop()
     }
 
@@ -88,7 +91,7 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
         case .didShowCheckout(let checkoutViewOutput):
             switch checkoutViewOutput {
             case .goToShippingMethods:
-                return .willShowCheckout
+                return .willShowShippingMethods
             case .goToLogin:
                 return .willShowLogin
             }

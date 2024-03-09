@@ -10,15 +10,11 @@ import UIKit
 import LoginModule
 
 public final class LoginCoordinator: NSObject, Coordinator {
-    public var watcher: ((CoordinatorState) -> Bool)?
-    
-    
-    public typealias State = CoordinatorState
     public var parentCoordinator: (any Coordinator)?
     
     public var children: [any Coordinator] = []
 
-    public enum CoordinatorState: Equatable {
+    public enum State: Equatable {
         case initial
         case didShowLogin(output: LoginViewOutput)
         case willShowRegister
@@ -94,8 +90,11 @@ public final class LoginCoordinator: NSObject, Coordinator {
             case .didLogin:
                 return .willShowProfile
             }
-            
-        case .willShowRegister, .willShowLogin, .didShowRegister, .willShowProfile:
+
+        case .didShowRegister:
+            return .willShowProfile
+
+        case .willShowRegister, .willShowLogin, .willShowProfile:
             return nextState
         }
     }
@@ -138,11 +137,7 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 
     private func willShowProfile() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .green
-        viewController.title = "Profile"
-        navigationController.popViewController(animated: true)
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.popUntil(MainViewController.self)
     }
 }
 
