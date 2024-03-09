@@ -10,12 +10,15 @@ import UIKit
 import LoginModule
 
 public final class LoginCoordinator: NSObject, Coordinator {
-
-    public var parentCoordinator: Coordinator?
+    public var watcher: ((CoordinatorState) -> Bool)?
     
-    public var children: [Coordinator] = []
+    
+    public typealias State = CoordinatorState
+    public var parentCoordinator: (any Coordinator)?
+    
+    public var children: [any Coordinator] = []
 
-    public enum State: Equatable {
+    public enum CoordinatorState: Equatable {
         case initial
         case didShowLogin(output: LoginViewOutput)
         case willShowRegister
@@ -29,7 +32,7 @@ public final class LoginCoordinator: NSObject, Coordinator {
     public var navigationController: UINavigationController
     private var navigationStateWatcher: ((State) -> Bool)? = nil
 
-    init(parentCoordinator: Coordinator? = nil, navigationController: UINavigationController) {
+    init(parentCoordinator: (any Coordinator)? = nil, navigationController: UINavigationController) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         super.init()
@@ -58,7 +61,7 @@ public final class LoginCoordinator: NSObject, Coordinator {
     }
 
     private func loop() {
-        if let navigationStateWatcher = navigationStateWatcher, navigationStateWatcher(currentState) {return}
+        if  let parentCoordinator = parentCoordinator, parentCoordinator.willManage(currentState) { return }
 
         self.currentState = next(currentState)
 
@@ -103,7 +106,8 @@ public final class LoginCoordinator: NSObject, Coordinator {
             case .didRegister(result: let didRegister):
                 StateRepository.updateUserState(to: didRegister ? .user : .guest)
                 print("UserIdentity: \(StateRepository.getUserState())")
-                self?.navigationStateWatcher?(.didShowRegister)
+                self?.currentState = .didShowRegister
+                self?.loop()
             }
         }
 

@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 public final class MainModuleCoordinator: Coordinator {
-    public var parentCoordinator: Coordinator?
+    public var watcher: ((State) -> Bool)?
+    
+    public var parentCoordinator: (any Coordinator)?
 
-    public var children: [Coordinator] = []
+    public var children: [any Coordinator] = []
 
      public enum State: Equatable {
         case initial

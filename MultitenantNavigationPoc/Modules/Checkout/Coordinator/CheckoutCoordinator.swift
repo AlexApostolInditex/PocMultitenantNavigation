@@ -10,9 +10,11 @@ import CheckoutModule
 import UIKit
 
 public final class CheckoutCoordinator: NSObject, Coordinator {
-    public var parentCoordinator: Coordinator?
+    public var watcher: ((State) -> Bool)?
     
-    public var children: [Coordinator] = []
+    public var parentCoordinator: (any Coordinator)?
+    
+    public var children: [any Coordinator] = []
 
     public var navigationController: UINavigationController
     
@@ -34,7 +36,7 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
         print("Deinit: \(String(describing: self))")
     }
 
-    init(parentCoordinator: Coordinator? = nil, navigationController: UINavigationController) {
+    init(parentCoordinator: (any Coordinator)? = nil, navigationController: UINavigationController) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
         super.init()
@@ -57,6 +59,26 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
         case .initial, .didShowCheckout:
             assertionFailure("Unexpected loop case")
         }
+    }
+
+    public func willManage<State>(_ state: State) -> Bool {
+        if let state  = state as? LoginCoordinator.State {
+            switch state {
+            case .willShowProfile:
+                navigationController.popViewController(animated: true)
+                currentState = .willShowShippingMethods
+                loop()
+                return true
+            case .didShowRegister:
+                navigationController.popUntil(CheckoutViewController.self)
+                currentState = .willShowShippingMethods
+                loop()
+                return true
+            default: break
+
+            }
+        }
+        return false
     }
 
     private func next(_ nextState: State) -> State {
@@ -107,23 +129,24 @@ public final class CheckoutCoordinator: NSObject, Coordinator {
     private func showLogin() {
         let loginCoordinator = LoginCoordinator(parentCoordinator: self, navigationController: navigationController)
         children.append(loginCoordinator)
-        loginCoordinator.start { [weak self] state in
-            switch state {
-            case .willShowProfile:
-                    self?.navigationController.popViewController(animated: true)
-                    self?.currentState = .willShowShippingMethods
-                    self?.loop()
-                return true
-            case .didShowRegister:
-                self?.navigationController.popUntil(CheckoutViewController.self)
-                self?.currentState = .willShowShippingMethods
-                self?.loop()
-                return true
-            default: break
-
-            }
-            return false
-        }
+        loginCoordinator.start()
+//        loginCoordinator.start { [weak self] state in
+//            switch state {
+//            case .willShowProfile:
+//                    self?.navigationController.popViewController(animated: true)
+//                    self?.currentState = .willShowShippingMethods
+//                    self?.loop()
+//                return true
+//            case .didShowRegister:
+//                self?.navigationController.popUntil(CheckoutViewController.self)
+//                self?.currentState = .willShowShippingMethods
+//                self?.loop()
+//                return true
+//            default: break
+//
+//            }
+//            return false
+//        }
     }
 }
 

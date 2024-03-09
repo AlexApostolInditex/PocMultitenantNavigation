@@ -38,15 +38,4 @@ final class LoginCoordinatorTests: XCTestCase {
         sut.start(with: .didShowLogin(output: .didLogin(result: true)))
         XCTAssertEqual(sut.currentState, .willShowProfile)
     }
-
-    func test_loginCoordinator_given_watcher_informsWatcher() {
-        var capturedState: [LoginCoordinator.State] = []
-        let navigationStateWatcher: (LoginCoordinator.State) -> Bool = { state in
-            capturedState.append(state)
-            return true
-        }
-
-        sut.start(navigationStateWatcher: navigationStateWatcher)
-        XCTAssertEqual(capturedState, [.initial])
-    }
 }
