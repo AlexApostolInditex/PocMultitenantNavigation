@@ -12,7 +12,6 @@
 		A346E0222B98CC1500C9D3F0 /* CheckoutModule in Frameworks */ = {isa = PBXBuildFile; productRef = A346E0212B98CC1500C9D3F0 /* CheckoutModule */; };
 		A3C512A52B9B24E2001DDC92 /* LoginCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C512A42B9B24E2001DDC92 /* LoginCoordinatorTests.swift */; };
 		A3C512AA2B9B286D001DDC92 /* CheckoutCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C512A92B9B286D001DDC92 /* CheckoutCoordinatorTests.swift */; };
-		A3C512AD2B9CBF60001DDC92 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C512AC2B9CBF60001DDC92 /* CoordinatorTests.swift */; };
 		A3F30A9B2B986E8100468E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30A9A2B986E8100468E38 /* AppDelegate.swift */; };
 		A3F30A9D2B986E8100468E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30A9C2B986E8100468E38 /* SceneDelegate.swift */; };
 		A3F30A9F2B986E8100468E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F30A9E2B986E8100468E38 /* ViewController.swift */; };
@@ -45,7 +44,6 @@
 		A346E01F2B98CC0300C9D3F0 /* CheckoutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCoordinator.swift; sourceTree = "<group>"; };
 		A3C512A42B9B24E2001DDC92 /* LoginCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorTests.swift; sourceTree = "<group>"; };
 		A3C512A92B9B286D001DDC92 /* CheckoutCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutCoordinatorTests.swift; sourceTree = "<group>"; };
-		A3C512AC2B9CBF60001DDC92 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		A3F30A972B986E8100468E38 /* MultitenantNavigationPoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultitenantNavigationPoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F30A9A2B986E8100468E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F30A9C2B986E8100468E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,14 +133,6 @@
 			path = Checkout;
 			sourceTree = "<group>";
 		};
-		A3C512AB2B9CBF51001DDC92 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				A3C512AC2B9CBF60001DDC92 /* CoordinatorTests.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		A3F30A8E2B986E8100468E38 = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +171,6 @@
 		A3F30AB02B986E8300468E38 /* MultitenantNavigationPocTests */ = {
 			isa = PBXGroup;
 			children = (
-				A3C512AB2B9CBF51001DDC92 /* Coordinator */,
 				A3C512A82B9B285A001DDC92 /* Checkout */,
 				A3C512A72B9B2854001DDC92 /* Login */,
 				A3C512A62B9B284E001DDC92 /* Main */,
@@ -400,7 +389,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3C512AD2B9CBF60001DDC92 /* CoordinatorTests.swift in Sources */,
 				A3C512A52B9B24E2001DDC92 /* LoginCoordinatorTests.swift in Sources */,
 				A3C512AA2B9B286D001DDC92 /* CheckoutCoordinatorTests.swift in Sources */,
 				A3F30AE02B987BAD00468E38 /* MainCoordinatorTests.swift in Sources */,
